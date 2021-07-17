@@ -4,6 +4,7 @@ h1{
 
 body{
     text-align: center;
+    background-image: linear-gradient(to right, rgb(211, 143, 40) , rgb(241, 225, 179));
 }
 
 .square{
@@ -42,4 +43,15 @@ body{
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.btns{
+    margin: 10px;
+    padding: 10px;
+    width: 320px;
+    background-color: bisque;
+}
+
+.btns:hover{
+    background-color: rgb(243, 218, 187);
 }
