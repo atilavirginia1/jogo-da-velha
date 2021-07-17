@@ -6,32 +6,46 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
-function handleClick(event){
+function handleClick(event) {
     let square = event.target;
     let position = square.id;
 
-    handleMove(position);
-    updateSquares();
+    let gameOver = handleMove(position);
+    updateSquare(position);
+
+    setTimeout(() => {
+        if (gameOver) {
+            alert("Fim de Jogo! Jogador " + (playerTime+1) + " venceu!")
+        }
+    }, 10);
+
 }
 
-function updateSquares(){
+function updateSquares() {
     let squares = document.querySelectorAll(".square");
 
     squares.forEach((square) => {
         let position = square.id;
         let symbol = board[position];
 
-        if(symbol != ''){
+        if (symbol != '') {
             square.innerHTML = `<div class='${symbol}'></div>`;
-        }else{
+        } else {
             square.innerHTML = `<div class=''></div>`;
         }
 
     })
 }
 
-function restartGame(){
+function restartGame() {
     board = ['', '', '', '', '', '', '', '', ''];
     playerTime = 0;
+    gameOver = false;
     updateSquares();
+}
+
+function updateSquare(position){
+    let square = document.getElementById(position.toString());
+    let symbol = board[position];
+    square.innerHTML = `<div class='${symbol}'></div>`;
 }
